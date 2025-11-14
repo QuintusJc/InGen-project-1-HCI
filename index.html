@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" id="top">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ari — Human-Centered Motion & Interface</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Sticky Neumorphic Header -->
+  <header class="site-header neu-surface sticky">
+    <nav class="nav container">
+      <a class="brand" href="index.html" aria-label="Ari Home">Ari</a>
+
+      <!-- Mobile menu (CSS checkbox hack, no JS) -->
+      <input id="navToggle" type="checkbox" class="nav-toggle" aria-label="Open menu">
+      <label class="hamburger" for="navToggle" aria-hidden="true"><span></span></label>
+
+      <ul class="nav-links">
+        <li><a href="#concept">Concept</a></li>
+        <li><a href="#scenes">Storyboard</a></li>
+        <li><a href="#rationale">Design Rationale</a></li>
+        <li><a href="#reflection">Reflection</a></li>
+        <li><a href="storyboard.html">Motion Page</a></li>
+        <li><a href="control.html">Control UI</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" id="concept">
+      <div class="hero-text">
+        <h1>Human-Centered Motion and Interface Design<br><span class="accent">“Animating Empathy”</span></h1>
+        <p class="lead">
+          A healthcare humanoid named <strong>Ari</strong> interacts with patients using calm, understandable body language. Motions apply
+          Disney principles—anticipation, slow-in/slow-out, and follow-through—plus empathy-driven timing inspired by Aido.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="storyboard.html">View Motion Storyboard</a>
+          <a class="btn btn-ghost" href="control.html">Open Control Interface</a>
+        </div>
+      </div>
+
+      <!-- Demo phase indicator -->
+      <div class="hero-card neu-elev">
+        <h3 class="hero-card-title">Phase Indicator (Demo)</h3>
+        <div class="phase-indicator">
+          <div class="dot" aria-hidden="true"></div>
+          <div class="labels" aria-hidden="true">
+            <span>Anticipate</span><span>Move</span><span>Rest</span>
+          </div>
+        </div>
+        <p class="muted small">Color eases from mint (#D8F3DC) to sky blue (#ADE8F4) on a calm rhythm.</p>
+      </div>
+    </section>
+
+    <!-- Six scenes preview (cards with icons) -->
+    <section class="section" id="scenes" aria-labelledby="scenes-title">
+      <h2 id="scenes-title">Six Key Scenes</h2>
+      <div class="card-grid">
+        <article class="scene-card neu-elev">
+          <div class="thumb" aria-hidden="true">🤖</div>
+          <h3>Greeting</h3>
+          <p>Upper body turns ~30° toward the patient, <span class="note">pause 0.5s</span>, then a small wave—friendly, not startling.</p>
+        </article>
+        <article class="scene-card neu-elev">
+          <div class="thumb" aria-hidden="true">🙂</div>
+          <h3>Acknowledgment</h3>
+          <p>Slow nod with the head slightly lagging the torso—communicating patience and respect.</p>
+        </article>
+        <article class="scene-card neu-elev">
+          <div class="thumb" aria-hidden="true">📝</div>
+          <h3>Offer Help</h3>
+          <p>Elbow → wrist → fingers along a curved arc; gentle finger settle. ~2.5s so users can prepare.</p>
+        </article>
+        <article class="scene-card neu-elev">
+          <div class="thumb" aria-hidden="true">👐</div>
+          <h3>Reassure</h3>
+          <p>Slight lean forward, palms open up; center-weighted stance keeps intent readable.</p>
+        </article>
+        <article class="scene-card neu-elev">
+          <div class="thumb" aria-hidden="true">🌬️</div>
+          <h3>Wait Mode</h3>
+          <p>Subtle breathing: chest rises 1–2 cm every ~2.5s—quiet awareness instead of stillness.</p>
+        </article>
+        <article class="scene-card neu-elev">
+          <div class="thumb" aria-hidden="true">👋</div>
+          <h3>Farewell</h3>
+          <p>Torso rotates to leave; arm wave trails by <span class="note">~0.3s</span> to create smooth follow-through.</p>
+        </article>
+      </div>
+      <div class="more-row">
+        <a class="btn btn-ghost" href="storyboard.html#flow">See full timing flow</a>
+      </div>
+    </section>
+
+    <!-- Design Rationale -->
+    <section class="section" id="rationale">
+      <h2>Design Rationale</h2>
+      <div class="split">
+        <div class="neu-surface pad">
+          <h3>Motion System</h3>
+          <ul class="bullets">
+            <li>Anticipation pauses give users time to read intent.</li>
+            <li>Slow-in/slow-out + curved paths reduce mechanical feel.</li>
+            <li>Overlapping action & micro-breathing convey attentive calm.</li>
+          </ul>
+        </div>
+        <div class="neu-surface pad">
+          <h3>Interface System</h3>
+          <ul class="bullets">
+            <li>Soft neumorphism over a warm, beige canvas.</li>
+            <li>Buttons float with dual shadows; active state gently pulses every 1.5s.</li>
+            <li>Phase indicator blends mint → sky blue on an ease-in-out curve.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="section" id="reflection">
+      <h2>Reflection</h2>
+      <p class="copy neu-surface pad">
+        Motion itself expresses personality. Tiny choices—half-second pauses, slight tilts, slower returns—change how intent is read.
+        Without facial expressions, timing and gesture become a robot’s emotional language. Matching the UI’s warmth and rhythm to
+        Ari’s breathing makes control feel connected, not fragmented. If users can predict and trust the rhythm, they start to feel
+        cooperation. That safety and respect guide future HRI work.
+      </p>
+    </section>
+  </main>
+
+  <!-- Back to top -->
+  <a href="#top" class="to-top" aria-label="Back to top">↑</a>
+
+  <footer class="site-footer container">
+    <p class="small muted">© 2025 Ari Project — Human-Centered Motion & Interface Design</p>
+  </footer>
+</body>
+</html>

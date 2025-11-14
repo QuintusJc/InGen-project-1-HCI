@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" id="top">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ari Motion Storyboard — Animating Empathy</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header neu-surface sticky">
+    <nav class="nav container">
+      <a class="brand" href="index.html">Ari</a>
+      <input id="navToggle" type="checkbox" class="nav-toggle" aria-label="Open menu">
+      <label class="hamburger" for="navToggle"><span></span></label>
+      <ul class="nav-links">
+        <li><a href="index.html#concept">Concept</a></li>
+        <li><a href="#flow">Timeline</a></li>
+        <li><a href="control.html">Control UI</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h1>“Animating Empathy” — Motion Storyboard</h1>
+      <p class="lead">Readable, predictable, emotionally safe gestures across six scenes.</p>
+    </section>
+
+    <section class="story-grid">
+      <!-- Each card highlights timing & principle -->
+      <article class="story-card neu-elev">
+        <h3>Greeting</h3>
+        <p><strong>Timing:</strong> turn 30°, pause 0.5s, small wave.</p>
+        <p><strong>Principles:</strong> Anticipation, low amplitude for safety.</p>
+      </article>
+      <article class="story-card neu-elev">
+        <h3>Acknowledgment</h3>
+        <p><strong>Timing:</strong> slow nod with smooth ease to mid, then back.</p>
+        <p><strong>Principles:</strong> Overlap (head lags torso), weight.</p>
+      </article>
+      <article class="story-card neu-elev">
+        <h3>Offer Help</h3>
+        <p><strong>Timing:</strong> ~2.5s total. Elbow → wrist → fingers.</p>
+        <p><strong>Principles:</strong> Arcs, follow-through finger settle.</p>
+      </article>
+      <article class="story-card neu-elev">
+        <h3>Reassure</h3>
+        <p><strong>Timing:</strong> Lean slightly, palms up, remain open.</p>
+        <p><strong>Principles:</strong> Staging to chest & hands; clarity.</p>
+      </article>
+      <article class="story-card neu-elev">
+        <h3>Wait Mode</h3>
+        <p><strong>Timing:</strong> chest rises 1–2 cm every ~2.5s.</p>
+        <p><strong>Principles:</strong> Subtle cycle to avoid “frozen” feel.</p>
+      </article>
+      <article class="story-card neu-elev">
+        <h3>Farewell</h3>
+        <p><strong>Timing:</strong> arm trails torso by ~0.3s, then settles.</p>
+        <p><strong>Principles:</strong> Follow-through, overlapping action.</p>
+      </article>
+    </section>
+
+    <!-- Simple linear flow with anchor for index -->
+    <section class="section" id="flow">
+      <h2>Timeline Flow</h2>
+      <ol class="flow">
+        <li>Anticipate (pause, orient)</li>
+        <li>Move (curved arc, ease-in/out)</li>
+        <li>Rest (settle, tiny overlap)</li>
+      </ol>
+      <a class="btn btn-ghost" href="index.html#scenes">Back to Overview</a>
+    </section>
+  </main>
+
+  <a href="#top" class="to-top" aria-label="Back to top">↑</a>
+  <footer class="site-footer container">
+    <p class="small muted">© 2025 Ari Project</p>
+  </footer>
+</body>
+</html>
