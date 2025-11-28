@@ -269,3 +269,143 @@
     .btn-row{grid-template-columns:1fr}
   }
   
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   Control UI — Mode-driven Motion + Empathy Feedback
+   ===================================================== */
+
+/* Control mode buttons with explanation text */
+.control-modes {
+  padding-top: 4px;
+}
+.mode-input {
+  display: none;
+}
+.primary-actions {
+  padding: 10px;
+}
+.mode-btn {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.btn-title {
+  font-size: 0.98rem;
+}
+.btn-sub {
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.85;
+}
+.mode-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 4px 12px 0;
+}
+
+/* Motion feedback panel improvements */
+.motion-panel .indicator-line {
+  align-items: center;
+}
+.phase-caption {
+  font-size: 0.86rem;
+}
+
+/* Base animation for breathing motion feedback */
+.phase-indicator .dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  animation-name: travel;
+  animation-timing-function: var(--ease-io);
+  animation-iteration-count: infinite;
+  animation-duration: 2.5s; /* Idle baseline */
+}
+
+/* Idle / default */
+.tablet .phase-indicator.small {
+  background: linear-gradient(90deg, var(--mint), var(--sky));
+}
+
+/* Mode-based visual states (medium contrast — Option B) */
+.tablet.mode-start .phase-indicator.small {
+  background: linear-gradient(90deg, #D8F3DC, #BDEFFB);
+}
+.tablet.mode-pause .phase-indicator.small {
+  background: linear-gradient(90deg, #E9F7EC, #CFEFF6);
+}
+.tablet.mode-follow .phase-indicator.small {
+  background: linear-gradient(90deg, #C4F0D9, #90E0EF);
+}
+.tablet.mode-return .phase-indicator.small {
+  background: linear-gradient(90deg, #E2F3ED, #B5E6F3);
+}
+
+/* Mode-driven animation rhythm — emotional pacing */
+.tablet.mode-start .phase-indicator .dot {
+  animation-duration: 2.2s;
+}
+.tablet.mode-pause .phase-indicator .dot {
+  animation-duration: 3s;
+}
+.tablet.mode-follow .phase-indicator .dot {
+  animation-duration: 1.8s;
+}
+.tablet.mode-return .phase-indicator .dot {
+  animation-duration: 2.6s;
+}
+
+/* Safety overrides — calmer when keeping distance */
+.tablet.safe-distance-on .phase-indicator .dot {
+  animation-duration: 3.1s;
+}
+
+/* Safety toggles — structure for explanation text */
+.toggle {
+  grid-template-columns: auto 1fr;
+}
+.toggle .label-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.toggle .label-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+
+/* =====================================================
+   Use Case Cards — Hover Micro-Interaction
+   ===================================================== */
+
+.usecase-grid article {
+  transition: transform .3s var(--easing), box-shadow .3s var(--easing);
+}
+.usecase-grid article:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    8px 8px 20px var(--shadow-dark),
+    -8px -8px 20px var(--shadow-light);
+}
+.usecase-grid .thumb {
+  font-size: 32px;
+  margin-bottom: 6px;
+}

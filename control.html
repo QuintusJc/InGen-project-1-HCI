@@ -29,58 +29,162 @@
         <p class="sub">Human-Centered Motion Dashboard</p>
         <span class="pill" aria-hidden="true"></span>
       </header>
-
-      <div class="block">
-        <button class="btn btn-primary btn-pulse">Start Interaction</button>
-        <div class="btn-row">
-          <button class="btn btn-ghost btn-pulse">Pause</button>
-          <button class="btn btn-ghost btn-pulse">Follow Me</button>
+    
+      <!-- Motion modes (radios at top level so CSS can react) -->
+      <input type="radio" name="mode" id="mode-idle" class="mode-input" checked>
+      <input type="radio" name="mode" id="mode-start" class="mode-input">
+      <input type="radio" name="mode" id="mode-pause" class="mode-input">
+      <input type="radio" name="mode" id="mode-follow" class="mode-input">
+      <input type="radio" name="mode" id="mode-return" class="mode-input">
+    
+      <!-- Modes + primary actions with explanations -->
+      <div class="block control-modes">
+        <div class="primary-actions">
+          <label class="btn btn-primary btn-pulse mode-btn" for="mode-start">
+            <span class="btn-title">Start Interaction</span>
+            <span class="btn-sub">Begin a calm greeting and check-in with the user.</span>
+          </label>
+    
+          <div class="btn-row">
+            <label class="btn btn-ghost btn-pulse mode-btn" for="mode-pause">
+              <span class="btn-title">Pause</span>
+              <span class="btn-sub">Let Ari stay present without moving away.</span>
+            </label>
+            <label class="btn btn-ghost btn-pulse mode-btn" for="mode-follow">
+              <span class="btn-title">Follow Me</span>
+              <span class="btn-sub">Use paced turning to walk alongside safely.</span>
+            </label>
+          </div>
+    
+          <label class="btn btn-ghost mode-btn" for="mode-return">
+            <span class="btn-title">Return to Base</span>
+            <span class="btn-sub">Guide Ari back along a predictable, gentle route.</span>
+          </label>
         </div>
-        <button class="btn btn-ghost">Return to Base</button>
+    
+        <p class="mode-note">
+          Choose a mode to see how Ari’s motion rhythm and feedback support daily care routines.
+        </p>
       </div>
-
-      <div class="block">
+    
+      <!-- Motion feedback panel -->
+      <div class="block motion-panel">
         <h2 class="block-title">Motion Feedback</h2>
         <div class="indicator-line neu-elev">
           <div class="phase-indicator small">
             <div class="dot"></div>
           </div>
-          <span class="muted">Anticipate • Move • Rest</span>
+          <span class="muted phase-caption">Anticipate • Move • Rest</span>
         </div>
       </div>
-
+    
+      <!-- Safety toggles with clear behavior descriptions -->
       <div class="block">
         <h2 class="block-title">Safety & Awareness</h2>
-
-        <!-- Toggle switches with pressed-in ON state -->
+    
         <label class="toggle neu-elev">
-          <input type="checkbox" checked>
+          <input type="checkbox" id="obstacleToggle" checked>
           <span class="track"><span class="knob"></span></span>
-          <span class="label">Obstacle Avoidance</span>
+          <span class="label-text">
+            <span class="label">Obstacle Avoidance</span>
+            <span class="label-sub">Helps Ari steer around furniture and people instead of cutting in sharply.</span>
+          </span>
         </label>
-
+    
         <label class="toggle neu-elev">
-          <input type="checkbox" checked>
+          <input type="checkbox" id="safeDistanceToggle" checked>
           <span class="track"><span class="knob"></span></span>
-          <span class="label">Safe Distance</span>
+          <span class="label-text">
+            <span class="label">Safe Distance</span>
+            <span class="label-sub">Keeps a wider personal space so older adults never feel crowded.</span>
+          </span>
         </label>
-
+    
         <label class="toggle neu-elev">
-          <input type="checkbox">
+          <input type="checkbox" id="manualOverrideToggle">
           <span class="track"><span class="knob"></span></span>
-          <span class="label">Manual Override</span>
+          <span class="label-text">
+            <span class="label">Manual Override</span>
+            <span class="label-sub">Allows a caregiver to take control when extra support is needed.</span>
+          </span>
         </label>
       </div>
-
+    
       <footer class="tablet-footer">
-        <p class="status">Ari is waiting for your signal.</p>
+        <p class="status" id="statusText">Ari is waiting for your signal.</p>
       </footer>
     </section>
+    
+    
   </main>
 
   <a href="#top" class="to-top" aria-label="Back to top">↑</a>
   <footer class="site-footer container">
     <p class="small muted">© 2025 Ari Project</p>
   </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const tablet = document.querySelector(".tablet");
+      const statusText = document.getElementById("statusText");
+  
+      const modeRadios = {
+        idle: document.getElementById("mode-idle"),
+        start: document.getElementById("mode-start"),
+        pause: document.getElementById("mode-pause"),
+        follow: document.getElementById("mode-follow"),
+        ret: document.getElementById("mode-return")
+      };
+  
+      const safeDistanceToggle = document.getElementById("safeDistanceToggle");
+  
+      function updateModeState() {
+        // 清掉旧的 mode class
+        tablet.classList.remove("mode-start", "mode-pause", "mode-follow", "mode-return");
+  
+        if (modeRadios.start.checked) {
+          tablet.classList.add("mode-start");
+          statusText.textContent = "Ari is greeting and checking in.";
+        } else if (modeRadios.pause.checked) {
+          tablet.classList.add("mode-pause");
+          statusText.textContent = "Ari is staying nearby and calm.";
+        } else if (modeRadios.follow.checked) {
+          tablet.classList.add("mode-follow");
+          statusText.textContent = "Ari is walking with you at a steady pace.";
+        } else if (modeRadios.ret.checked) {
+          tablet.classList.add("mode-return");
+          statusText.textContent = "Ari is returning safely to base.";
+        } else {
+          statusText.textContent = "Ari is waiting for your signal.";
+        }
+      }
+  
+      function updateSafeDistanceState() {
+        if (safeDistanceToggle && safeDistanceToggle.checked) {
+          tablet.classList.add("safe-distance-on");
+        } else {
+          tablet.classList.remove("safe-distance-on");
+        }
+      }
+  
+      // 监听模式变化
+      Object.values(modeRadios).forEach(function (radio) {
+        if (radio) {
+          radio.addEventListener("change", updateModeState);
+        }
+      });
+  
+      // 监听 Safe Distance 开关
+      if (safeDistanceToggle) {
+        safeDistanceToggle.addEventListener("change", updateSafeDistanceState);
+      }
+  
+      // 初始状态
+      updateModeState();
+      updateSafeDistanceState();
+    });
+  </script>
+
+
 </body>
 </html>
